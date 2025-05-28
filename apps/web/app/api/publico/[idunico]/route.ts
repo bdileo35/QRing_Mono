@@ -2,11 +2,11 @@ import { NextRequest } from "next/server";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export async function GET(request: NextRequest, context: { params: { idunico: string } }) {
-  const { idunico } = await context.params;
+export async function GET(request: NextRequest, context: { params: { idUnico: string } }) {
+  const { idUnico } = context.params;
   try {
     const direccion = await prisma.direccion.findUnique({
-      where: { idUnico: idunico },
+      where: { idUnico },
       include: {
         timbres: {
           include: {

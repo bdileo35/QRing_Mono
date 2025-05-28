@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from "react";
 import Image from "next/image";
+import CardContainer from "../components/CardContainer";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -17,8 +18,19 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "#f4f6fa" }}>
-      <div style={{ background: "#fff", borderRadius: 16, boxShadow: "0 2px 16px #0002", padding: 32, maxWidth: 340, width: "100%", textAlign: "center", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100vw",
+      height: "100vh",
+      background: "rgba(0,0,0,0.10)",
+      zIndex: 2000,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }}>
+      <CardContainer>
         <h2 style={{ color: "#1a4fa3", fontWeight: 700, marginBottom: 16 }}>Bienvenido a QRing_Pro</h2>
         <p style={{ fontSize: 15, color: "#333", marginBottom: 18 }}>
           Iniciá sesión para acceder a la administración.<br />
@@ -27,27 +39,27 @@ export default function LoginPage() {
         <form style={{ marginBottom: 18, width: '100%' }} onSubmit={handleSubmit}>
           <div style={{ marginBottom: 12, textAlign: "left" }}>
             <label style={{ fontSize: 14, color: "#555" }}>E-Mail</label>
-            <input type="text" value={email} onChange={e => setEmail(e.target.value)} style={{ width: "100%", padding: 8, borderRadius: 8, border: "1px solid #ccc", marginTop: 4 }} />
+            <input type="text" value={email} onChange={e => setEmail(e.target.value)} style={{ width: "100%", padding: 10, borderRadius: 10, border: "1px solid #ccc", marginTop: 4, fontSize: 16 }} />
           </div>
           <div style={{ marginBottom: 12, textAlign: "left" }}>
             <label style={{ fontSize: 14, color: "#555" }}>Password</label>
-            <input type="password" value={password} onChange={e => setPassword(e.target.value)} style={{ width: "100%", padding: 8, borderRadius: 8, border: "1px solid #ccc", marginTop: 4 }} />
+            <input type="password" value={password} onChange={e => setPassword(e.target.value)} style={{ width: "100%", padding: 10, borderRadius: 10, border: "1px solid #ccc", marginTop: 4, fontSize: 16 }} />
           </div>
           {error && <div style={{ color: '#c00', fontWeight: 600, marginBottom: 10, textAlign: 'center' }}>{error}</div>}
-          <div style={{ display: "flex", gap: 12, marginTop: 18 }}>
-            <button type="button" style={{ flex: 1, background: "#eee", color: "#1a4fa3", border: "none", borderRadius: 8, padding: 10, fontWeight: 600, cursor: "pointer" }}>Cancelar</button>
-            <button type="submit" style={{ flex: 1, background: "#1a4fa3", color: "#fff", border: "none", borderRadius: 8, padding: 10, fontWeight: 600, cursor: "pointer" }}>Aceptar</button>
+          <div style={{ display: "flex", gap: 16, marginTop: 18 }}>
+            <button type="button" style={{ flex: 1, background: "#eee", color: "#1a4fa3", border: "none", borderRadius: 10, padding: 12, fontWeight: 600, fontSize: 16, cursor: "pointer" }}>Cancelar</button>
+            <button type="submit" style={{ flex: 1, background: "#1a4fa3", color: "#fff", border: "none", borderRadius: 10, padding: 12, fontWeight: 600, fontSize: 16, cursor: "pointer" }}>Aceptar</button>
           </div>
         </form>
-        <div style={{ display: "flex", justifyContent: "center", gap: 16, marginBottom: 8, marginTop: 8 }}>
-          <button style={{ background: "#fff", border: "1px solid #ccc", borderRadius: "50%", width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, cursor: "pointer", padding: 0 }}>
-            <Image src="/google-icon.png" alt="Google" width={24} height={24} />
+        <div style={{ display: "flex", justifyContent: "center", gap: 20, marginBottom: 8, marginTop: 8 }}>
+          <button style={{ background: "#fff", border: "1px solid #ccc", borderRadius: "50%", width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, cursor: "pointer", padding: 0 }}>
+            <Image src="/google-icon.png" alt="Google" width={28} height={28} />
           </button>
-          <button style={{ background: "#fff", border: "1px solid #ccc", borderRadius: "50%", width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, cursor: "pointer", padding: 0 }}>
-            <Image src="/facebook-icon.png" alt="Facebook" width={24} height={24} />
+          <button style={{ background: "#fff", border: "1px solid #ccc", borderRadius: "50%", width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, cursor: "pointer", padding: 0 }}>
+            <Image src="/facebook-icon.png" alt="Facebook" width={28} height={28} />
           </button>
         </div>
-      </div>
+      </CardContainer>
     </div>
   );
 } 

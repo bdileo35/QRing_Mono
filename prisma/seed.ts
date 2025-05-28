@@ -5,6 +5,12 @@ const prisma = new PrismaClient();
 
 async function main() {
   console.log('Iniciando seed...');
+// Borra los datos existentes para evitar duplicados
+  await prisma.telefono.deleteMany();
+  await prisma.timbre.deleteMany();
+  await prisma.usuario.deleteMany();
+  await prisma.direccion.deleteMany();
+
   // Crea la dirección
   const direccion = await prisma.direccion.create({
     data: {
