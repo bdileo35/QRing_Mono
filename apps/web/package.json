@@ -23,5 +23,6 @@
   },
   "prisma": {
     "schema": "../../prisma/schema.prisma"
-  }
+  },
+  "packageManager": "npm@10.8.2"
 }
