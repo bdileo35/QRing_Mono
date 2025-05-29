@@ -5,16 +5,16 @@ import { useEffect, useState } from "react";
 const pasosImg = "/3steps_qring.png"; // Cambia el nombre si usas otro
 const logoImg = "/logo_qring.png"; // Cambia el nombre si usas otro
 
-export default function AccesoPage({ params }: { params: { idUnico: string } }) {
+export default function AccesoPage() {
   const [data, setData] = useState<any>(null);
   const [timbreSel, setTimbreSel] = useState<any>(null);
   const [showHelp, setShowHelp] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/publico/${params.idUnico}`)
+    fetch(`/api/publico/demo`)
       .then((res) => res.json())
       .then(setData);
-  }, [params.idUnico]);
+  }, []);
 
   // Estilos QRing
   const azul = "#1a4fa3";
