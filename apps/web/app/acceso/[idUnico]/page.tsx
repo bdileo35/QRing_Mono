@@ -1,8 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 // import { QRCode } from "qrcode.react"; // Solo para Comunidad, no para público
 
-export default function AccesoPage({ params }: { params: { idUnico: string } }) {
+export default function AccesoPage() {
+  const params = useParams<{ idUnico: string }>();
   const [data, setData] = useState<any>(null);
   const [tab, setTab] = useState<'Piso' | 'Dpto'>('Piso');
   const [pisoSel, setPisoSel] = useState<string | number | null>(null);
