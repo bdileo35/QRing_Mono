@@ -2,8 +2,9 @@
   "name": "qring_workspacebak",
   "version": "1.0.0",
   "main": "index.js",
+  "packageManager": "npm@10.8.2",
   "scripts": {
-    "dev": "npx turbo run dev",
+    "dev": "npx turbo run dev --parallel",
     "prisma:init": "prisma init",
     "seed": "tsx prisma/seed.ts"
   },
