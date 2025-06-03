@@ -1,54 +1,26 @@
-import React, { useState } from "react";
+import React from 'react';
 
+// CardContainer: Contenedor central reutilizable para todas las páginas principales.
+// El alto está pensado para dejar espacio para hasta 3 líneas de botones, pero se acomoda bien si hay 2 líneas.
 export default function CardContainer({ children }: { children: React.ReactNode }) {
-  const [activeTab, setActiveTab] = useState('Piso');
-
-  const handleTabClick = (tab: string) => {
-    setActiveTab(tab);
-  };
-
   return (
-    <div style={{
-      background: "#fff",
-      borderRadius: 24,
-      boxShadow: "0 4px 24px #0002",
-      padding: 40,
-      maxWidth: 420,
-      width: "100%",
-      margin: "0 auto",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center"
-    }}>
-      <div style={{ display: 'flex', marginBottom: 20 }}>
-        <button 
-          onClick={() => handleTabClick('Piso')} 
-          style={{
-            padding: '10px 20px',
-            marginRight: 10,
-            borderRadius: 12,
-            border: 'none',
-            background: activeTab === 'Piso' ? '#007bff' : '#ccc',
-            color: activeTab === 'Piso' ? '#fff' : '#000',
-            cursor: 'pointer'
-          }}
-        >
-          Piso
-        </button>
-        <button 
-          onClick={() => handleTabClick('Dpto')} 
-          style={{
-            padding: '10px 20px',
-            borderRadius: 12,
-            border: 'none',
-            background: activeTab === 'Dpto' ? '#007bff' : '#ccc',
-            color: activeTab === 'Dpto' ? '#fff' : '#000',
-            cursor: 'pointer'
-          }}
-        >
-          Dpto
-        </button>
-      </div>
+    <div
+      style={{
+        width: 380,
+        minHeight: 380, // Espacio más compacto
+        maxWidth: '110%',
+        margin: '0 auto',
+        background: '#fff',
+        borderRadius: '22px',
+        boxShadow: '0 4px 24px #0002',
+        padding: '28px 18px 24px 18px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 16,
+        boxSizing: 'border-box',
+      }}
+    >
       {children}
     </div>
   );

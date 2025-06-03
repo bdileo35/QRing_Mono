@@ -4,43 +4,68 @@ datasource db {
 }
 
 model Direccion {
-  id        Int      @id @default(autoincrement())
-  idUnico   String   @unique
-  calle     String
-  numero    String
-  ciudad    String
-  provincia String
-  pais      String
-  timbres   Timbre[]
+  id           String   @id @default(cuid())
+  idUnico      String   @unique
+  nombre       String
+  timbres      Timbre[]
 }
 
 model Timbre {
-  id          Int        @id @default(autoincrement())
-  piso        String
-  dpto        String
-  direccion   Direccion  @relation(fields: [direccionId], references: [id])
-  direccionId Int
-  usuario     Usuario?   @relation(fields: [usuarioId], references: [id])
-  usuarioId   Int?
+  id           String   @id @default(cuid())
+  nombre       String
+  direccionId  String
+  direccion    Direccion @relation(fields: [direccionId], references: [id])
+  usuarios     UsuarioTimbre[]
 }
 
 model Usuario {
-  id        Int      @id @default(autoincrement())
-  nombre    String
-  email     String   @unique
-  telefonos Telefono[]
-  timbres   Timbre[]
+  id           String   @id @default(cuid())
+  nombre       String
+  email        String?  @unique
+  telefono     String?
+  rol          Rol      // 'ADMIN' o 'USUARIO'
+  invitaciones Invitacion[]
+  timbres      UsuarioTimbre[]
 }
 
-model Telefono {
-  id        Int      @id @default(autoincrement())
-  numero    String
-  activo    Boolean  @default(false)
-  whatsapp  Boolean  @default(false)
-  voz       Boolean  @default(false)
-  video     Boolean  @default(false)
-  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
-  usuarioId Int
+model UsuarioTimbre {
+  id         String   @id @default(cuid())
+  usuarioId  String
+  timbreId   String
+  usuario    Usuario  @relation(fields: [usuarioId], references: [id])
+  timbre     Timbre   @relation(fields: [timbreId], references: [id])
+  metodo     MetodoContacto // 'WHATSAPP', 'LLAMADA', 'VIDEO'
+  estado     EstadoTelefono // 'ACTIVO', 'DND', 'DESACTIVADO'
+}
+
+model Invitacion {
+  id         String   @id @default(cuid())
+  email      String
+  timbreId   String
+  estado     EstadoInvitacion // 'PENDIENTE', 'ACEPTADA', 'RECHAZADA'
+}
+
+enum Rol {
+  ADMIN
+  USUARIO
+}
+
+enum MetodoContacto {
+  WHATSAPP
+  LLAMADA
+  VIDEO
+}
+
+enum EstadoTelefono {
+  ACTIVO
+  DND
+  DESACTIVADO
+}
+
+enum EstadoInvitacion {
+  PENDIENTE
+  ACEPTADA
+  RECHAZADA
 }
 
 
